@@ -60,10 +60,14 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
     },
-    "./shopify-hydrogen": "./dist/index.es.js"
+    "./shopify-hydrogen": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js"
+    }
   },
   "bugs": {
     "url": "https://github.com/Nosto/nosto-react/issues"
