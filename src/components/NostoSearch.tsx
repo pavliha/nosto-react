@@ -1,5 +1,4 @@
-import { useNostoContext } from "./context"
-import { useNostoApi } from "../utils/hooks"
+import { useRenderCampaigns, useNostoApi } from "../hooks"
 
 /**
  * You can personalise your search pages by using the NostoSearch component.
@@ -26,9 +25,7 @@ import { useNostoApi } from "../utils/hooks"
  */
 export default function NostoSearch(props: { query: string; placements?: string[] }) {
   const { query, placements } = props
-  const { recommendationComponent, useRenderCampaigns } = useNostoContext()
-
-  const { renderCampaigns, pageTypeUpdated } = useRenderCampaigns("search")
+  const { renderCampaigns } = useRenderCampaigns()
 
   useNostoApi(
     async (api) => {
@@ -36,9 +33,9 @@ export default function NostoSearch(props: { query: string; placements?: string[
         .viewSearch(query)
         .setPlacements(placements || api.placements.getPlacements())
         .load()
-      renderCampaigns(data, api)
+      renderCampaigns(data)
     },
-    [query, recommendationComponent, pageTypeUpdated]
+    [query]
   )
   return null
 }

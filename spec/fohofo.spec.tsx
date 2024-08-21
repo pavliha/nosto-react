@@ -1,8 +1,7 @@
-import React from "react"
+import { test, expect } from "vitest"
 import { render, screen, waitFor } from "@testing-library/react"
 import { NostoProvider, Nosto404, NostoPlacement } from "../src/index"
 import RecommendationComponent from "./renderer"
-import "@testing-library/jest-dom"
 import { WAIT_FOR_TIMEOUT } from "./utils"
 
 test("404 page render", async () => {
@@ -11,11 +10,9 @@ test("404 page render", async () => {
       account="shopify-11368366139"
       recommendationComponent={<RecommendationComponent />}
     >
-      <>
-        <NostoPlacement id="notfound-nosto-1" />
-        <NostoPlacement id="notfound-nosto-2" />
-        <Nosto404 />
-      </>
+      <NostoPlacement id="notfound-nosto-1" />
+      <NostoPlacement id="notfound-nosto-2" />
+      <Nosto404 />
     </NostoProvider>
   )
 

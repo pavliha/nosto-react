@@ -1,8 +1,7 @@
-import React from "react"
+import { test, expect } from "vitest"
 import { render, screen, waitFor } from "@testing-library/react"
 import { NostoProvider, NostoPlacement, NostoProduct } from "../src/index"
 import RecommendationComponent from "./renderer"
-import "@testing-library/jest-dom"
 import { WAIT_FOR_TIMEOUT } from "./utils"
 
 test("Product page render", async () => {
@@ -11,12 +10,10 @@ test("Product page render", async () => {
       account="shopify-11368366139"
       recommendationComponent={<RecommendationComponent />}
     >
-      <>
-        <NostoPlacement id="productpage-nosto-1" />
-        <NostoPlacement id="productpage-nosto-2" />
-        <NostoPlacement id="productpage-nosto-3" />
-        <NostoProduct product="7078777258043" />
-      </>
+      <NostoPlacement id="productpage-nosto-1" />
+      <NostoPlacement id="productpage-nosto-2" />
+      <NostoPlacement id="productpage-nosto-3" />
+      <NostoProduct product="7078777258043" />
     </NostoProvider>
   )
 
